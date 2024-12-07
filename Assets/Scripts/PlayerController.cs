@@ -6,14 +6,15 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Animator animator;
     [SerializeField] private float speed;
 
-    private Vector3 movement;
     private Vector2 direction;
     private Rigidbody2D rb;
-    
+    private SpriteRenderer spriteRenderer;
+
 
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
     private void Update()
     {
@@ -42,11 +43,8 @@ public class PlayerController : MonoBehaviour
         {
             animator.SetTrigger("attack");
         }
-     
-        if (mousePosition.x < transform.position.x)
-            transform.localScale = new Vector3(-1, 1, 1);
-        else
-            transform.localScale = new Vector3(1, 1, 1);       
+        spriteRenderer.flipX = (mousePosition.x < transform.position.x);
+
     }
 }
 
