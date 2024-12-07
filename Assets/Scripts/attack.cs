@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class attack : MonoBehaviour
@@ -10,7 +7,7 @@ public class attack : MonoBehaviour
     [SerializeField] private Transform attackCircle;
     [SerializeField] private float attackRange = 0.5f;
     [SerializeField] private LayerMask enemyLayers;
-    [SerializeField] private float damage;
+    [SerializeField] private int damage;
 
     private void Update()
     {
@@ -29,10 +26,19 @@ public class attack : MonoBehaviour
     private void Attack()
     {
         anim.SetTrigger("attack");
+
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackCircle.position, attackRange, enemyLayers);
+
         foreach (Collider2D enemy in hitEnemies)
         {
-            Debug.Log("attack!");
+            enemy.GetComponent<Enemy>().TakeDamage(damage);
         }
+    }
+
+    private void OnDrawGizmos()
+    {
+        if (attackPoint == null)
+            return;
+        Gizmos.DrawWireSphere(attackCircle.position, attackRange);
     }
 }
