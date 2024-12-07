@@ -268,9 +268,10 @@ GameObject:
   - component: {fileID: 1170693568}
   - component: {fileID: 1170693567}
   - component: {fileID: 1170693566}
+  - component: {fileID: 1170693569}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -440,6 +441,19 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: -0.2}
   m_Size: {x: 0.53, y: 0.98}
   m_Direction: 0
+--- !u!114 &1170693569
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1170693560}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 109d17cec4a60bc49a7903af603eb9d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movingSpeed: 10
 --- !u!1 &1357740314
 GameObject:
   m_ObjectHideFlags: 0
@@ -552,7 +566,7 @@ Transform:
   m_GameObject: {fileID: 1365687363}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 23.2, y: -0.31056, z: 0}
+  m_LocalPosition: {x: 11.1, y: -0.31056, z: 0}
   m_LocalScale: {x: 18.499939, y: 12.501562, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -589,6 +603,7 @@ GameObject:
   - component: {fileID: 1511128827}
   - component: {fileID: 1511128829}
   - component: {fileID: 1511128828}
+  - component: {fileID: 1511128830}
   m_Layer: 3
   m_Name: Enemy
   m_TagString: Untagged
@@ -626,7 +641,7 @@ Transform:
   m_GameObject: {fileID: 1511128821}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 15.11, y: -0.03, z: 0.025569396}
+  m_LocalPosition: {x: 5.03, y: 1.73, z: 0.025569396}
   m_LocalScale: {x: 1, y: 1, z: 0.19999999}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -710,7 +725,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &1511128827
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -768,10 +783,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e47bc21f2fd4385418ecbab8e8a165ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingState: 1
-  roamingDistanceMax: 7
-  roamingDistanceMin: 3
-  roamingTimerMax: 2
+  _startingState: 1
+  _roamingDistanceMax: 7
+  _roamimgDistanceMin: 3
+  _roamimgTimerMax: 2
+  _isChasingEnemy: 1
+  _chasingDistance: 4
+  _chasingSpeedMultiplier: 2
+  _isAttackingEnemy: 1
+  _attackingDistance: 2
+  _attackRate: 2
 --- !u!195 &1511128829
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -794,6 +815,19 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &1511128830
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1511128821}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ade805a637a53140bcafe32ba9f5346, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxHealth: 10
 --- !u!1 &1587636605
 GameObject:
   m_ObjectHideFlags: 0
@@ -868,7 +902,7 @@ Transform:
   m_GameObject: {fileID: 1587636605}
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 10.62, y: -2.9259264, z: -0.10017492}
+  m_LocalPosition: {x: 4.4, y: -2.9259264, z: -0.10017492}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
