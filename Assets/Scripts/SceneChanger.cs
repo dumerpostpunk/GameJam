@@ -1,20 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class SceneChanger: MonoBehaviour
 {
-    public void OpenMenu()
+    public void SceneChange(int scene)
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(scene);
     }
-
-    public void OpenGame()
+    public void Exit()
     {
-        SceneManager.LoadScene(1);
+        Application.Quit();
     }
-
-
 }
 
