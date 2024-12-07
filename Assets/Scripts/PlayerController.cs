@@ -1,12 +1,14 @@
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private Animator animator;
     [SerializeField] private float speed;
-
+    public bool facingRight = true;
     private Vector2 direction;
     private Rigidbody2D rb;
+    
 
     private void Start()
     {
@@ -20,6 +22,7 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         rb.MovePosition(rb.position + direction * speed * Time.fixedDeltaTime);
+
     }
     private void InputManager()
     {
@@ -32,5 +35,19 @@ public class PlayerController : MonoBehaviour
         animator.SetFloat("Horizontal", direction.x);
         animator.SetFloat("Vertical", direction.y);
         animator.SetFloat("Speed", direction.sqrMagnitude);
+        if (direction != Vector2.zero)
+        {
+            animator.SetBool("isRunning", true);
+        }
+        else
+        {
+            animator.SetBool("isRunning", false);
+        }
     }
+    
+
+
+
+
 }
+
