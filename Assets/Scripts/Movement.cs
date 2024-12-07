@@ -5,7 +5,8 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private Animator animator;
-    public float speed;
+    [SerializeField] private float speed;
+
     private Vector2 direction;
     private Rigidbody2D rd;
 
@@ -15,22 +16,19 @@ public class PlayerController : MonoBehaviour
     }
     private void Update()
     {
-        direction.x = Input.GetAxisRaw("Horizontal");
-        direction.y = Input.GetAxisRaw("Vertical");
-        animator.SetFloat("Horizontal", direction.x);
-        animator.SetFloat("Vertical", direction.y);
-        animator.SetFloat("Speed", direction.sqrMagnitude);
+        InputManager();
     }
     private void FixedUpdate()
     {
         rd.MovePosition(rd.position + direction * speed * Time.fixedDeltaTime);
     }
-
-
-
-
-
-
-
-
+    private void InputManager()
+    {
+        direction.x = Input.GetAxisRaw("Horizontal");
+        direction.y = Input.GetAxisRaw("Vertical");
+        direction = new Vector2(direction.x, direction.y).normalized;
+        animator.SetFloat("Horizontal", direction.x);
+        animator.SetFloat("Vertical", direction.y);
+        animator.SetFloat("Speed", direction.sqrMagnitude);
+    }
 }
