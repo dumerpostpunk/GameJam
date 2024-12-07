@@ -5,7 +5,8 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] private Animator animator;
     [SerializeField] private float speed;
-    public bool facingRight = true;
+
+    private Vector3 movement;
     private Vector2 direction;
     private Rigidbody2D rb;
     
@@ -17,7 +18,7 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         InputManager();
-        Animation();
+        UpdateAnimation();
     }
     private void FixedUpdate()
     {
@@ -30,17 +31,22 @@ public class PlayerController : MonoBehaviour
         direction.y = Input.GetAxisRaw("Vertical");
         direction = new Vector2(direction.x, direction.y).normalized;
     }
-    private void Animation()
+    private void UpdateAnimation()
     {
-        animator.SetFloat("Horizontal", direction.x);
-        animator.SetFloat("Vertical", direction.y);
-        animator.SetFloat("Speed", direction.sqrMagnitude);
-        
+        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        mousePosition.z = 0;
+
+        animator.SetBool("isMoving", direction != Vector2.zero);
+        animator.SetBool("front", mousePosition.y < transform.position.y);
+        if (Input.GetMouseButtonDown(0))
+        {
+            animator.SetTrigger("attack");
+        }
+     
+        if (mousePosition.x < transform.position.x)
+            transform.localScale = new Vector3(-1, 1, 1);
+        else
+            transform.localScale = new Vector3(1, 1, 1);       
     }
-    
-
-
-
-
 }
 
