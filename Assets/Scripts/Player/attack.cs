@@ -9,6 +9,7 @@ public class attack : MonoBehaviour
     [SerializeField] private float attackRange = 0.5f;
     [SerializeField] private LayerMask enemyLayers;
     [SerializeField] private int damage;
+    [SerializeField] public PlayerController player;
 
     private bool canAttack = true;
     public float cooldownTime = 1.0f;
@@ -37,7 +38,13 @@ public class attack : MonoBehaviour
         foreach (Collider2D enemy in hitEnemies)
         {
             enemy.GetComponent<EnemyEntity>().TakeDamage(damage);
+
+            if (enemy.GetComponent<EnemyEntity>()._currentHealth < 5)
+            {
+                player.hasWings = true;
+            }
         }
+
     }
     private IEnumerator Cooldown()
     {

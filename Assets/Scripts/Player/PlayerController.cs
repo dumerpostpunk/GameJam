@@ -6,8 +6,8 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] private Animator animator;
     [SerializeField] private float speed;
-    public bool hasWings = true;
-
+    [SerializeField] public bool hasWings = false;
+    [SerializeField] private SpriteRenderer wings;
     private Vector2 direction;
     private Rigidbody2D rb;
     private SpriteRenderer spriteRenderer;
@@ -23,9 +23,19 @@ public class PlayerController : MonoBehaviour
         if (hasWings)
         {
             speed = 10;
+            wings.enabled = true;
         }
+        else
+        {
+            speed = 5;
+            wings.enabled = false;
+
+        }
+
         InputManager();
         UpdateAnimation();
+        
+
     }
     private void FixedUpdate()
     {

@@ -2,12 +2,13 @@ using System;
 using System.Collections;
 using System.Drawing;
 using UnityEngine;
-
+using static PlayerController;
 [RequireComponent(typeof(PolygonCollider2D))]
 [RequireComponent(typeof(BoxCollider2D))]
 [RequireComponent(typeof(EnemyAI))]
 public class EnemyEntity : MonoBehaviour
 {
+    
     //[SerializeField] private EnemySO _enemySO;
     public Animator anim;
     private AudioSource _audioSourse;
@@ -16,7 +17,7 @@ public class EnemyEntity : MonoBehaviour
     public event EventHandler OnDeath;
 
     [SerializeField] private int _maxHealth;
-    private int _currentHealth;
+    public int _currentHealth;
 
     private PolygonCollider2D _polygonCollider2D;
     private BoxCollider2D _boxCollider2D;
@@ -68,6 +69,8 @@ public class EnemyEntity : MonoBehaviour
     {
         if (_currentHealth <= 0)
         {
+            
+            
             Debug.Log("diiiiie");
             _boxCollider2D.enabled = false;
             _polygonCollider2D.enabled = false;
