@@ -15,7 +15,7 @@ public class Enemy : MonoBehaviour
     {
         currentHealth -= damage;
 
-        if (currentHealth <= 0 )
+        if (currentHealth <= 0)
         {
             Debug.Log("DIIIIIE");
             Destroy(gameObject);

@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class attack : MonoBehaviour
 {
@@ -9,6 +10,9 @@ public class attack : MonoBehaviour
     [SerializeField] private LayerMask enemyLayers;
     [SerializeField] private int damage;
 
+    private bool canAttack = true;
+    public float cooldownTime = 1.0f;
+
     private void Update()
     {
         Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -17,9 +21,10 @@ public class attack : MonoBehaviour
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         attackPoint.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
 
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && canAttack)
         {
             Attack();
+            StartCoroutine(Cooldown());
         }
     }
 
@@ -31,8 +36,14 @@ public class attack : MonoBehaviour
 
         foreach (Collider2D enemy in hitEnemies)
         {
-            enemy.GetComponent<Enemy>().TakeDamage(damage);
+            enemy.GetComponent<EnemyEntity>().TakeDamage(damage);
         }
+    }
+    private IEnumerator Cooldown()
+    {
+        canAttack = false;
+        yield return new WaitForSeconds(cooldownTime);
+        canAttack = true;
     }
 
     private void OnDrawGizmos()
@@ -41,4 +52,6 @@ public class attack : MonoBehaviour
             return;
         Gizmos.DrawWireSphere(attackCircle.position, attackRange);
     }
+
+    
 }
