@@ -139,7 +139,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &231350784
 Transform:
   m_ObjectHideFlags: 0
@@ -439,8 +439,8 @@ Rigidbody2D:
   m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
+  m_UseAutoMass: 1
+  m_Mass: 0.49939162
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
@@ -520,8 +520,8 @@ Transform:
   m_LocalScale: {x: 1.006, y: 1.0725, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1994197765}
   - {fileID: 2034520770}
+  - {fileID: 1994197765}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1170693566
@@ -537,7 +537,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 1170693567}
-  speed: 5
+  speed: 0
   hasWings: 1
 --- !u!95 &1170693567
 Animator:
@@ -8048,7 +8048,7 @@ GameObject:
   - component: {fileID: 2034520770}
   - component: {fileID: 2034520771}
   - component: {fileID: 2034520772}
-  - component: {fileID: 2034520773}
+  - component: {fileID: 2034520774}
   m_Layer: 6
   m_Name: wings
   m_TagString: Untagged
@@ -8112,7 +8112,7 @@ SpriteRenderer:
   m_SortingLayerID: 1535161813
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: -1597020621, guid: f956a212d914d0e48b01adc3ee39811c, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -8120,7 +8120,7 @@ SpriteRenderer:
   m_Size: {x: 2, y: 2}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!95 &2034520772
@@ -8144,7 +8144,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &2034520773
+--- !u!114 &2034520774
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8153,7 +8153,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2034520769}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a96b8d038e06558469d7475c83b2a596, type: 3}
+  m_Script: {fileID: 11500000, guid: db49f4073d156d3409c98873668a4f85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 2034520772}
