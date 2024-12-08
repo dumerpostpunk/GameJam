@@ -42,6 +42,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             animator.SetTrigger("attack");
+
         }
         spriteRenderer.flipX = (mousePosition.x < transform.position.x);
 
