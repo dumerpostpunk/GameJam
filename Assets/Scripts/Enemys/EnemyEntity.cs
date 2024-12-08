@@ -71,11 +71,11 @@ public class EnemyEntity : MonoBehaviour
             Debug.Log("diiiiie");
             _boxCollider2D.enabled = false;
             _polygonCollider2D.enabled = false;
-
+            anim.SetTrigger("death");
             _enemyAI.SetDeathState();
-
+           
             OnDeath?.Invoke(this, EventArgs.Empty);
-            Destroy(gameObject, 2);
+            Destroy(gameObject, 5);
         }
     }
 }
