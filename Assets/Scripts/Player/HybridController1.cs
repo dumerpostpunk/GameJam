@@ -1,16 +1,15 @@
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class HybridController : MonoBehaviour
 {
     [SerializeField] private Animator animator;
     [SerializeField] private float speed;
-    public bool hasWings = true;
+    
 
     private Vector2 direction;
     private Rigidbody2D rb;
     private SpriteRenderer spriteRenderer;
-
 
     private void Start()
     {
@@ -19,33 +18,22 @@ public class PlayerController : MonoBehaviour
     }
     private void Update()
     {
-        if (hasWings)
-        {
-            speed = 10;
-        }
         InputManager();
         UpdateAnimation();
     }
     private void FixedUpdate()
     {
-        rb.MovePosition(rb.position + direction * speed * Time.fixedDeltaTime);
 
     }
     private void InputManager()
     {
-        direction.x = Input.GetAxisRaw("Horizontal");
-        direction.y = Input.GetAxisRaw("Vertical");
-        direction = new Vector2(direction.x, direction.y).normalized;
+
     }
     private void UpdateAnimation()
     {
         Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         mousePosition.z = 0;
-
-        if (!hasWings)
-        {
-            animator.SetBool("isMoving", direction != Vector2.zero);
-        }
+       
         animator.SetBool("front", mousePosition.y < transform.position.y);
         if (Input.GetMouseButtonDown(0))
         {
